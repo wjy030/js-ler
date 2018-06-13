@@ -1,0 +1,127 @@
+javascript 组成：
+	ECMAScript  核心：{基本语法结构和内置对象（array,string,date,math等）}
+	宿主环境
+
+变量升级：
+	var a=2会被翻译成
+	var a; a=2;
+	var a 会被升到其作用域顶部
+	
+js数据类型：
+1.数字，字符串，布尔，symbol  为原始类型
+2.null 和undefined,一般将它们看成两个奇葩
+3.对象类型数据，包括：函数，数组，对象
+
+*javascript中所有数字都是64位浮点数
+javascript运算：
+	避免小数运算
+	运算方法：先转换成整数（*10的倍数）再运算
+字符串换行 var a = 'a\
+				b\
+				c
+				';
+console.dir()可以显示一个对象所有的属性和方法
+**********************************************
+类型检测：
+1.typeof 运算符
+系统定义的数据类型	typeof返回的数据类型
+Number					number
+String					string
+Boolean					boolean
+Undefined				undefined
+Null					object
+Object					object
+2. Object.prototype.toString
+Object.prototype.toString.call(变量)
+//返回参数的类型
+function type(o) {
+	const str = Object.prototype.toString.call(o);
+	return str.match(/\[object (.*)\]/)[1].toLowerCase();
+}
+**********************************************
+数据类型转换：
+	显式：调用内置方法
+	隐式：不同数据之间进行运算会引发隐式类型转换
+js中可以把任意一种数据 类型转换成三种原始值：数字、字符串、布尔值
+js中可以把布尔值、数字、字符串（除了null与undefined）转为对象类型。严格来讲是转成了它们对应的包装对象
+*********************************************
+Number()
+
+parseInt(),parseFloat(),isNaN()在ES6里把这两个方法移植到了Number对象身上
+
+参数1：
+	undefined NaN
+	null      0
+	布尔值    ture为1，false为0
+	字符串
+		1、空字符串，空格字符串转为0
+		2、非空字符串，且内容为纯数字转为对应数字
+		3、其余都是NaN
+	数字	原来的数字
+	对象
+		1、对象、函数转成NaN		2、空数组转为0，数组里只有一个数据并且这个数据能转成数字，则转成对应的数字，其它都转成NaN
+*********************************************
+String()
+
+基本数据类型、null/undefined的结果就是给数据加上引号变成字符串对象
+	1、数组的结果为把所有中括号去掉、外面加个引号
+	2、对象的结果为[object Object]
+	3、函数的结果为在函数整体外面加个引号
+*********************************************
+Boolean()
+1、undefined false
+2、null  	 false
+3、数字
+	+0、-0、NaN转布尔值的结果为false，其它的转布尔值的结果为true
+4、布尔值	转为对应的值
+5、字符串
+	空字符串 false,其它 true
+6、对象 true
+*********************************************
+数据类型	js包装对象
+数字 		Number
+字符串		String
+布尔值		Boolean
+null
+undefined
+数组		Array
+函数		Function
+对象		Object
+valueOf()	返回对应的原始值
+toString()	返回对象的字符串表现形式
+
+12.valueOf() 报错 . 表示小数点
+(12).valueOf() 正确
+true.valueOf() 正确
+
+转换原理：
+Number(obj) => Number(obj.valueOf());
+如果obj.valueOf()返回的是一个对象，则会继续调用
+Number(obj.toString());
+如果 obj.toString()返回的还是一个对象则会报错
+
+String(obj) => String(obj.toString());
+如果obj.toString()返回的是一个对象，则会继续调用
+String(obj.valueOf());
+如果 obj.valueOf()返回的还是一个对象，则会报错
+*********************************************
+隐式类型转换
+	出现场景
+		不同类型的数据间运算、比较
+		对非布尔值类型的数据求布尔值
+		条件语句的括号里
+隐式转数字出现的场景
+	数学运算符(+ - * / %), 但是加号运算里不能出现字符串或对象类型数据
+	一元+- （正负操作符）后的数据
+	某些比较运算符
+隐式转数字原理
+	调用Number方法
+转数字方法总结
+	显式
+		Number(), parseInt(), parseFloat()
+	隐式
+		数据前面加个加号或者先加个减号再把数据括起来，前面再加个减号
+		数据减个0
+		数据减个1或者乘个1
+		数据模上Infinity(不适用于Infinity转数字)
+		数据++或者数据--
