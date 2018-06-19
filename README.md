@@ -23,3 +23,23 @@ var a = 'a\
 				';__
 				
 __console.dir()可以显示一个对象所有的属性和方法__
+
+## 类型检测：
+1. typeof 运算符  
+
+|系统定义的数据类型|typeof返回的数据类型|
+|:-|:-|
+|Number | number  |
+|String | string  |
+|Boolean | boolean  |
+|Undefined | undefined  |
+|Null | object  |
+|Object | object|  
+
+2. Object.prototype.toString  
+Object.prototype.toString.call(变量)
+//返回参数的类型  
+function type(o) {  
+	const str = Object.prototype.toString.call(o);  
+	return str.match(/\[object (.*)\]/)[1].toLowerCase();  
+}
