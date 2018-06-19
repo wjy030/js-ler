@@ -43,3 +43,8 @@ function type(o) {
 	const str = Object.prototype.toString.call(o);  
 	return str.match(/\[object (.*)\]/)[1].toLowerCase();  
 }
+## 数据类型转换：
+* 显式：调用内置方法
+* 隐式：不同数据之间进行运算会引发隐式类型转换  
+__js中可以把任意一种数据 类型转换成三种原始值：数字、字符串、布尔值__  
+__js中可以把布尔值、数字、字符串（除了null与undefined）转为对象类型。严格来讲是转成了它们对应的包装对象__
