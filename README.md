@@ -32,7 +32,7 @@ __console.dir()可以显示一个对象所有的属性和方法__
 |String | string  |
 |Boolean | boolean  |
 |Undefined | undefined  |
-|Null | object  
+ |Null | object  
 |Object | object|  
 
 2. Object.prototype.toString  
@@ -42,12 +42,12 @@ function type(o) {
 	const str = Object.prototype.toString.call(o);  
 	return str.match(/\[object (.*)\]/)[1].toLowerCase();  
 }
-## 数据类型转换：
+ ## 数据类型转换：
 * 显式：调用内置方法
 * 隐式：不同数据之间进行运算会引发隐式类型转换  
 __js中可以把任意一种数据 类型转换成三种原始值：数字、字符串、布尔值__  
 __js中可以把布尔值、数字、字符串（除了null与undefined）转为对象类型。严格来讲是转成了它们对应的包装对象__
-### 显式类型转换
+ ### 显式类型转换
 [类型转换方法](typeconvert.md)
 
 ### 隐式类型转换
@@ -86,3 +86,18 @@ __js中可以把布尔值、数字、字符串（除了null与undefined）转为
   * 隐式  
   数据加个空字符串  
   数据加个空数组  
+#### 隐式转布尔值
+##### 隐式转布尔值出现的场景
+  * 取反运算  
+  1个叹号表示，把这个数据转成布尔值后取它的反值  
+  2个叹号表示，把这个数据转成布尔值
+  * 三目运算符
+  * 条件语句的小括号里
+  * 逻辑运算符
+##### 隐式转布尔值原理
+Boolean()方法
+##### 转布尔值方法总结
+  * 显示  
+  Boolean()  
+  * 隐式  
+  前面加两个叹号  
