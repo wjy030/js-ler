@@ -23,7 +23,6 @@ var a = 'a\
 				';__
 				
 __console.dir()可以显示一个对象所有的属性和方法__
-
 ## 类型检测：
 1. typeof 运算符  
 
@@ -33,7 +32,7 @@ __console.dir()可以显示一个对象所有的属性和方法__
 |String | string  |
 |Boolean | boolean  |
 |Undefined | undefined  |
-|Null | object  |
+|Null | object  
 |Object | object|  
 
 2. Object.prototype.toString  
@@ -73,3 +72,17 @@ __js中可以把布尔值、数字、字符串（除了null与undefined）转为
 数据减个1或者乘个1  
 数据模上Infinity(不适用于Infinity转数字)  
 数据++或者数据--  
+#### 隐式转字符串
+##### 隐式转字符串出现的场景
+  * 有字符串的加法运算
+  * 有对象的加法运算
+  * 某些比较运算符
+  * 调用alert,document.write方法
+##### 隐式转字符串原理
+调用Number方法  
+##### 转字符串方法总结
+  * 显式  
+  String()
+  * 隐式  
+  数据加个空字符串  
+  数据加个空数组  
