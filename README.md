@@ -26,6 +26,7 @@ __console.dir()可以显示一个对象所有的属性和方法__
 ## 类型检测：
 1. typeof 运算符  
 
+
 |系统定义的数据类型|typeof返回的数据类型|
 |:-|:-|
 |Number | number  |
@@ -35,12 +36,14 @@ __console.dir()可以显示一个对象所有的属性和方法__
  |Null | object  
 |Object | object|  
 
+
 2. Object.prototype.toString  
 Object.prototype.toString.call(变量)
 //返回参数的类型  
 function type(o) {  
 	const str = Object.prototype.toString.call(o);  
 	return str.match(/\[object (.*)\]/)[1].toLowerCase();  
+
 }
  ## 数据类型转换：
 * 显式：调用内置方法
@@ -57,7 +60,8 @@ __js中可以把布尔值、数字、字符串（除了null与undefined）转为
 		条件语句的括号
 #### 隐式转数字
 ##### 隐式转数字出现的场景
-  * 数学运算符(+ - * / %), 但是加号运算里不能出现字符串或对象类型数据  
+
+* 数学运算符(+ - * / %), 但是加号运算里不能出现字符串或对象类型数据  
   * 一元+- （正负操作符）后的数据  
   * 某些比较运算符  
 ##### 隐式转数字原理
@@ -101,3 +105,9 @@ Boolean()方法
   Boolean()  
   * 隐式  
   前面加两个叹号  
+
+## 递增与递减运算符
+* 具有隐式转数字的作用
+
+let a = 3;  
+console.log(a++,++a); //3 5
